@@ -90,13 +90,11 @@
 
     function calculateBmi() {
        
-        let bmi = weightInp.value / (heightInp.value * heightInp.value);
-
-        // console.log(bmi);
-        
+        let bmi = weightInp.value / (heightInp.value * heightInp.value).toFixed()
+         checker.innerHTML = `BMI is ${bmi}  `   
 
         if (weightInp.value.trim() === '') {
-            checker.innerHTML = 'Weight cannot be empty'
+            checker.innerHTML = `BMI is ${bmi} Weight cannot be empty `  
             
         } else if (heightInp.value.trim() === '') {
             checker.innerHTML = 'Height cannot be empty'
