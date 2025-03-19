@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmgdCuQP0w8eHkmXoHARsA0VA9pXPG71578A&s);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(6, 22, 4, 0.7);
+            background-blend-mode: overlay;
+        }
+        .peri{
+            text-align: center;
+            font-size: 40px;
+            color: white;
+            margin-top: 70px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 30px;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            padding: 10px;
+            margin-top: 30px;
+            border: 1px solid white;
+            border-radius: 4px;
+            outline: none;
+            text-align: center; 
+        }
+        .second_input{
+            margin-top: 20px;
+        }
+        button{
+            background-color: green;
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid green;
+            border-radius: 5px;
+            width: 200px;
+            cursor: pointer;
+            font-size: 25px;
+            color: white;
+        }
+        .display{
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin-top: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="content">
+            <h1 class="peri">Body Mass Index</h1>
+            <input type="number" id="weight" class="first_input">
+            <input type="number" id="height" class="second_input">
+
+            <button onclick="calculateBmi()">Calculate</button>
+
+            <div id="display" class="display"></div>
+        </div>
+        
+    
+    </div>
+</body>
+</html>
+<script>
+
+    let weightInp = document.getElementById('weight')
+    let heightInp = document.getElementById('height') 
+    let checker = document.getElementById('display')
+
+    function calculateBmi() {
+       
+        let bmi = weightInp.value / (heightInp.value * heightInp.value);
+
+        // console.log(bmi);
+        
+
+        if (weightInp.value.trim() === '') {
+            checker.innerHTML = 'Weight cannot be empty'
+            
+        } else if (heightInp.value.trim() === '') {
+            checker.innerHTML = 'Height cannot be empty'
+
+        } else if (bmi < 18.5) {
+            checker.innerHTML = `This is your ${bmi}, You are Underweight`
+
+        } else if (bmi > 18.5 && bmi < 24.9) {
+            checker.innerHTML = `This is your ${bmi}, You have a Normal Weight`
+            console.log(bmi);
+            
+        } else if (bmi > 25 && bmi < 29.9) {
+            checker.innerHTML = `This is your ${bmi}, You are Overweight`
+            console.log(bmi);
+
+        } else {
+            checker.innerHTML = `This is your ${bmi}, You are Obese`
+        }
+    }
+
+</script>
+
+<!-- Body mass index(BMI) is calculated as follows: bmi = weight in Kg / (height x height) in m2. Write a function which calculates bmi. BMI is used to broadly define different weight groups in adults 20 years old or older.Check if a person is underweight, normal, overweight or obese based the information given below.
+
+The same groups apply to both men and women.
+Underweight: BMI is less than 18.5
+Normal weight: BMI is 18.5 to 24.9
+Overweight: BMI is 25 to 29.9
+Obese: BMI is 30 or more -->
